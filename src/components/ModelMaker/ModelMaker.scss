@@ -1,0 +1,149 @@
+$minWidth: 280px;
+@mixin entityWidth() {
+	min-width: 240px;
+	max-width: $minWidth;
+	min-height: 140px;
+	width: 100%;
+}
+
+
+
+.ModelMaker {
+	&.ModelMaker-main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+	}
+
+	.md-dialog-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		min-height: 100%;
+	}
+	.md-menu--select-field {
+		width: 100%;
+	}
+	.md-card-title--title {
+		font-weight: 600;
+	}
+
+	.md-table-column--header {
+		padding: 0 10px 0 30px
+	}
+
+	.ModelMaker-grid {
+		margin: auto;
+		min-width: 50%;
+		padding-top: 5em;
+	}
+
+	.ModelMaker-sourceEntity-header {
+		background: #E1F5FE;
+		height: 5px;
+	}
+
+	.ModelMaker-section {
+		display: flex;
+		flex-flow: column wrap;
+		flex: 1;
+	}
+
+	.dataSection-cell {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+	.dataEntityHeader {
+		background: #d3e8ff;
+		justify-content: start;
+		padding: 1em;
+		width: 100%;
+	}
+	.dataModelCell {
+		text-align: center;
+		padding: .5em;
+	}
+	.dataHeaderIcon {
+		margin: 0 .5em auto 0;
+	}
+	.entity {
+		margin: 0 auto 2em auto;
+		@include entityWidth;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.md-data-table--responsive {
+			width: 100%;
+		}
+	;
+		.add-attr-container {
+			width: 100%;
+			margin: auto;
+			background-color: #f2f2f2;
+		}
+	}
+
+	.entity-type {
+		text-align: center;
+		font-style: italic;
+		padding: 1em;
+	}
+	.entity-add-button {
+		display: flex;
+		margin: auto;
+	}
+
+	.entity-attr {
+		position: absolute;
+		left: 0;
+		top: 0;
+		min-width: $minWidth;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.md-tile-text--primary {
+		white-space: nowrap;
+	}
+	.md-table-header {
+		background-color: #f2f2f2;
+	}
+	.md-list--menu {
+		padding: 0;
+	}
+
+	.delete-icons {
+		color: #CCC;
+	}
+
+	.delete-icons:hover {
+		color: red
+	}
+
+	.section-header {
+		text-align: center;
+	}
+
+	.section-button {
+		width: 220px;
+		margin: 0 auto 1em;
+	}
+	#addEntityButton, #addLinkButton, #disabledHeader {
+		display: flex;
+		margin: 0 auto 1em;
+	}
+
+	.attr-row {
+		padding: 0 0 0 50px;
+		position: relative;
+	}
+
+	.emptyEntity-delete {
+		padding: 0 10px 0 0
+	}
+}

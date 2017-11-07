@@ -1,0 +1,121 @@
+.ModelMaker.ModelMaker-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; }
+
+.ModelMaker .md-dialog-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100%; }
+
+.ModelMaker .md-menu--select-field {
+  width: 100%; }
+
+.ModelMaker .md-card-title--title {
+  font-weight: 600; }
+
+.ModelMaker .md-table-column--header {
+  padding: 0 10px 0 30px; }
+
+.ModelMaker .ModelMaker-grid {
+  margin: auto;
+  min-width: 50%;
+  padding-top: 5em; }
+
+.ModelMaker .ModelMaker-sourceEntity-header {
+  background: #E1F5FE;
+  height: 5px; }
+
+.ModelMaker .ModelMaker-section {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1; }
+
+.ModelMaker .dataSection-cell {
+  display: flex;
+  flex-direction: column;
+  flex: 1; }
+
+.ModelMaker .dataEntityHeader {
+  background: #d3e8ff;
+  justify-content: start;
+  padding: 1em;
+  width: 100%; }
+
+.ModelMaker .dataModelCell {
+  text-align: center;
+  padding: .5em; }
+
+.ModelMaker .dataHeaderIcon {
+  margin: 0 .5em auto 0; }
+
+.ModelMaker .entity {
+  margin: 0 auto 2em auto;
+  min-width: 240px;
+  max-width: 280px;
+  min-height: 140px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .ModelMaker .entity .md-data-table--responsive {
+    width: 100%; }
+  .ModelMaker .entity .add-attr-container {
+    width: 100%;
+    margin: auto;
+    background-color: #f2f2f2; }
+
+.ModelMaker .entity-type {
+  text-align: center;
+  font-style: italic;
+  padding: 1em; }
+
+.ModelMaker .entity-add-button {
+  display: flex;
+  margin: auto; }
+
+.ModelMaker .entity-attr {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 280px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.ModelMaker .md-tile-text--primary {
+  white-space: nowrap; }
+
+.ModelMaker .md-table-header {
+  background-color: #f2f2f2; }
+
+.ModelMaker .md-list--menu {
+  padding: 0; }
+
+.ModelMaker .delete-icons {
+  color: #CCC; }
+
+.ModelMaker .delete-icons:hover {
+  color: red; }
+
+.ModelMaker .section-header {
+  text-align: center; }
+
+.ModelMaker .section-button {
+  width: 220px;
+  margin: 0 auto 1em; }
+
+.ModelMaker #addEntityButton, .ModelMaker #addLinkButton, .ModelMaker #disabledHeader {
+  display: flex;
+  margin: 0 auto 1em; }
+
+.ModelMaker .attr-row {
+  padding: 0 0 0 50px;
+  position: relative; }
+
+.ModelMaker .emptyEntity-delete {
+  padding: 0 10px 0 0; }
