@@ -9,7 +9,6 @@ export class LinkSection extends Component {
 	state = {
 		entities: []
 	};
-	
 	onAddEntity = linkType => {
 		let data = this.state.entities.slice();
 		data.push({
@@ -19,7 +18,6 @@ export class LinkSection extends Component {
 		});
 		this.setState({ entities: data })
 	};
-	
 	onAddAttr = ownerID => {
 		let data = this.state.entities.slice();
 		data[ownerID].attr.push({
@@ -27,21 +25,31 @@ export class LinkSection extends Component {
 		});
 		this.setState({ entities: data })
 	};
-	
 	onDeleteAttr = (ownerID, selfID) => {
 		let data = this.state.entities.slice();
 		delete data[ownerID].attr[selfID];
 		this.setState({ entities: data })
 	};
-	
 	onDeleteEntity = id => {
 		let data = this.state.entities.slice();
 		delete data[id];
 		this.setState({ entities: data })
 	};
+	attrRef = node => {
+	
+	};
+	
+	constructor(props) {
+		super(props);
+		this.DOMNode = [];
+	}
 	
 	componentDidMount() {
+		console.log(this)
+	}
 	
+	componentDidUpdate() {
+		console.log(this)
 	}
 	
 	render() {
@@ -71,8 +79,7 @@ export class LinkSection extends Component {
 					this.state.entities.map((e, i) =>
 						<EmptyEntity key={i} id={i} name={e.name} attr={e.attr} onAddAttr={this.onAddAttr}
 						             isLink={true} linkType={e.linkType} onDeleteEntity={this.onDeleteEntity}
-						             onDeleteAttr={this.onDeleteAttr}
-						             SVG_PATH={this.props.SVG_PATH}/>
+						             onDeleteAttr={this.onDeleteAttr} attrRef={node => this.DOMNode[i] = node}/>
 					)
 				}
 			

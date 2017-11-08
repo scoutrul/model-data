@@ -5,7 +5,6 @@
   "dependencies": {
     "babel-eslint": "^8.0.2",
     "babel-preset-react": "^6.24.1",
-    "document-offset": "^1.0.4",
     "eslint-plugin-react": "^7.3.0",
     "node-sass": "^4.6.0",
     "npm-run-all": "^4.1.2",

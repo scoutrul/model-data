@@ -9,7 +9,9 @@ import {
 	Toolbar,
 } from 'react-md';
 
-import  { OpenedDialog } from './blocks/index';
+import './ModelMaker.css'
+
+import { OpenedModelDialog } from './OpenedModelDialog';
 
 export class ModelDialog extends Component {
 	
@@ -76,7 +78,7 @@ export class ModelDialog extends Component {
 								onChange={(e) => this.setNewGraphName(e)}
 							/>
 						</Cell>
-						<OpenedDialog/>
+						<OpenedModelDialog/>
 					
 					</Grid>
 				</DialogContainer>
