@@ -5,14 +5,18 @@ import {
 	TextField, MenuButtonColumn, ListItem, FontIcon, Button
 } from 'react-md';
 
-import { AttributeRow } from './attributeRow'
+import { AttrRow } from './AttrRow'
 
 export class EmptyEntity extends Component {
 	
-
 	
 	render() {
-		let { isDictionary, onAddAttr, name, attr, id, onDeleteEntity, onDeleteAttr, isLink, linkType, attrRef } = this.props;
+		let {
+			isDictionary, onAddAttr, name,
+			attr, id, onDeleteEntity, onDeleteAttr,
+			isLink, linkType
+		} = this.props;
+		
 		const typeOfEntity = () => {
 			if (isLink) {
 				return linkType
@@ -58,8 +62,8 @@ export class EmptyEntity extends Component {
 						
 						<TableBody id='attrRow'>
 							{attr && attr.map((el, i) =>
-								<AttributeRow el={el} i={i} id={id} key={i} onDeleteAttr={onDeleteAttr}/>
-								)
+								<AttrRow SVG_PATH={this.props.SVG_PATH} el={el} id={i} ownerID={id} key={i} onDeleteAttr={onDeleteAttr}/>
+							)
 							}
 						</TableBody>
 					</DataTable>

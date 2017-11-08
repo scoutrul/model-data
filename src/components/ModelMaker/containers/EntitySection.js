@@ -7,7 +7,23 @@ export class EntitySection extends Component {
 	state = {
 		entityCount: 0,
 		attrCount: 0,
-		entities: [],
+		entities: [{
+			name: 'new entity',
+			isDictionary: false,
+			attr: [{ name: 'пусто' },]
+		},{
+			name: 'new entity',
+			isDictionary: false,
+			attr: [{ name: 'пусто' },]
+		},{
+			name: 'new entity',
+			isDictionary: false,
+			attr: [{ name: 'пусто' },]
+		},{
+			name: 'new entity',
+			isDictionary: false,
+			attr: [{ name: 'пусто' },]
+		}],
 		attrDOM: []
 	};
 	onAddEntity = (isDict = false) => {
@@ -19,11 +35,13 @@ export class EntitySection extends Component {
 		});
 		this.setState({ entities: data })
 	};
+	
 	onDeleteEntity = id => {
 		let data = this.state.entities.slice();
 		delete data[id];
 		this.setState({ entities: data })
 	};
+	
 	onAddAttr = ownerID => {
 		let data = this.state.entities.slice();
 		let attrDOM = this.storeAttrToOwner();
@@ -33,18 +51,20 @@ export class EntitySection extends Component {
 		});
 		this.setState({ entities: data })
 	};
+	
 	onDeleteAttr = (ownerID, selfID) => {
 		let data = this.state.entities.slice();
 		delete data[ownerID].attr[selfID];
 		this.setState({ entities: data })
 	};
 	
-	constructor(props) {
-		super(props);
-	}
-	
 	componentDidMount() {
 		// console.log(this)
+		this.onAddEntity();
+		this.onAddEntity();
+		this.onAddAttr(1);
+		this.onAddAttr(2);
+		this.onAddAttr(3);
 	}
 	
 	componentDidUpdate() {
@@ -83,7 +103,8 @@ export class EntitySection extends Component {
 						<EmptyEntity key={i} id={i} name={e.name} attr={e.attr} onAddAttr={this.onAddAttr}
 						             isDictionary={e.isDictionary} onDeleteEntity={this.onDeleteEntity}
 						             onDeleteAttr={this.onDeleteAttr}
-						             attrRef={attrDOM => this.storeAttrToOwner(attrDOM, i)} />
+						             SVG_PATH={this.props.SVG_PATH}
+						             />
 					)
 				}
 			</Cell>
