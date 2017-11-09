@@ -5,14 +5,18 @@ import {
 	TextField, MenuButtonColumn, ListItem, FontIcon, Button
 } from 'react-md';
 
-import { AttributeRow } from './attributeRow'
+import { AttrRow } from './'
 
 export class EmptyEntity extends Component {
 	
-
-	
 	render() {
-		let { isDictionary, onAddAttr, name, attr, id, onDeleteEntity, onDeleteAttr, isLink, linkType, attrRef } = this.props;
+		let {
+			isDictionary, onAddAttr, name,
+			attr, id, onDeleteEntity, onDeleteAttr,
+			isLink, linkType,
+			setNameEntity, setNameAttr
+		} = this.props;
+		
 		const typeOfEntity = () => {
 			if (isLink) {
 				return linkType
@@ -40,10 +44,11 @@ export class EmptyEntity extends Component {
 										defaultValue={name}
 										className="md-cell md-cell--bottom"
 										style={{ width: '100%' }}
+										onChange={(e) => setNameEntity(e, id)}
 									/>
 								</TableColumn>
 								<TableColumn grow className="emptyEntity-header">
-									Связь
+									<FontIcon error className="delete-icons">share</FontIcon>
 								</TableColumn>
 								<MenuButtonColumn className="emptyEntity-delete"
 								                  icon
@@ -57,9 +62,9 @@ export class EmptyEntity extends Component {
 						</TableHeader>
 						
 						<TableBody id='attrRow'>
-							{attr && attr.map((el, i) =>
-								<AttributeRow el={el} i={i} id={id} key={i} onDeleteAttr={onDeleteAttr}/>
-								)
+							{attr && Object.values(attr).map((el, i) =>
+								<AttrRow id={i} ownerID={id} key={i} onDeleteAttr={onDeleteAttr} setNameAttr={setNameAttr}/>
+							)
 							}
 						</TableBody>
 					</DataTable>

@@ -1,7 +1,8 @@
 import { EmptyEntity } from "./EmptyEntity";
 import { DataEntity } from "./DataEntity";
-import { DataSection } from "../containers/DataSection";
-import { EntitySection } from "../containers/EntitySection";
-import { LinkSection } from "../containers/LinkSection";
+import AttrRow from "./AttrRow";
+import { OpenedDialog } from "./OpenedDialog";
+import { SvgLayer } from "./SvgLayer";
 
-export {EmptyEntity, DataEntity, DataSection, EntitySection, LinkSection}
+
+export {EmptyEntity, AttrRow, DataEntity, OpenedDialog, SvgLayer}

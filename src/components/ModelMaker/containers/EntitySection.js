@@ -1,56 +1,58 @@
 import React, { Component } from 'react';
+import _ from 'lodash'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as entityActions from '../../../reducers/entities';
 import { Cell, MenuButton, ListItem } from 'react-md';
 
 import { EmptyEntity } from '../blocks/index'
 
-export class EntitySection extends Component {
-	state = {
-		entityCount: 0,
-		attrCount: 0,
-		entities: [],
-		attrDOM: []
-	};
-	onAddEntity = (isDict = false) => {
-		let data = this.state.entities.slice();
-		data.push({
-			name: 'new entity',
+class EntitySection extends Component {
+	
+	emptyEntity = (id = 0, isDict = false) => {
+		return {
+			id: id,
+			name: 'Новая вершина',
 			isDictionary: isDict,
-			attr: [{ name: 'пусто' },]
-		});
-		this.setState({ entities: data })
+			attr: {
+				0: {
+					id: 0,
+					name: 'Аттрибут',
+					links: { 0: { to: 0 } }
+				}
+			},
+			start: '00-00-00',
+			end: '00-00-00'
+		}
 	};
+	
+	onAddEntity = (isDict = false) => {
+		let counter = _.size(this.props.entities);
+		let newEntity = this.emptyEntity(counter, isDict);
+		this.props.actions.onAddEntity(newEntity)
+	};
+	
 	onDeleteEntity = id => {
-		let data = this.state.entities.slice();
+		let data = Object.keys(this.props.entities);
 		delete data[id];
-		this.setState({ entities: data })
+		this.props.actions.onDeleteEntity(data)
 	};
+	
 	onAddAttr = ownerID => {
-		let data = this.state.entities.slice();
-		let attrDOM = this.storeAttrToOwner();
-		data[ownerID].attr.push({
-			name: 'new attr',
-			dom: attrDOM
-		});
-		this.setState({ entities: data })
+		console.log(ownerID)
+		let data = {
+			name: `new ${ownerID}`
+		};
+		
+		this.props.actions.onAddAttr(ownerID, data)
 	};
+	
 	onDeleteAttr = (ownerID, selfID) => {
-		let data = this.state.entities.slice();
-		delete data[ownerID].attr[selfID];
-		this.setState({ entities: data })
+		// let data = this.props.entities.slice();
+		// delete data[ownerID].attr[selfID];
+		// this.props.actions.onDeleteAttr(data)
+		
 	};
-	
-	constructor(props) {
-		super(props);
-	}
-	
-	componentDidMount() {
-		// console.log(this)
-	}
-	
-	componentDidUpdate() {
-		// console.log(this)
-	}
-	
 	storeAttrToOwner = (attrDOM, ownerEntityID) => {
 		// console.log(attrDOM, ownerEntityID)
 		// let data = this.state.attrDOM.slice();
@@ -60,11 +62,30 @@ export class EntitySection extends Component {
 		// });
 		// this.setState({ attrDOM: data })
 	};
+	
+	setNameEntity = (name, id) => {
+		let payload = { name, id };
+		this.props.actions.onChangeEntityName(payload)
+	};
+	
+	setNameAttr = (ownerID, selfID, name) => {
+		let payload = { ownerID, selfID, name };
+		this.props.actions.onChangeAttrName(payload)
+	};
+	
+	componentDidMount() {
+		this.props.actions.onAddEntity(this.emptyEntity(0))
+	}
+	
+	componentDidUpdate() {
+		// console.log(this)
+	}
+	
 	render() {
-		
+		let entities = this.props.entities;
 		return (
 			<Cell size={4} className="ModelMaker-section">
-				<h3 className="section-header">Сущности:</h3>
+				<h3 className="section-header">Вершины:</h3>
 				
 				<MenuButton
 					id="addEntityButton"
@@ -79,15 +100,44 @@ export class EntitySection extends Component {
 					Добавить
 				</MenuButton>
 				{
-					this.state.entities.map((e, i) =>
-						<EmptyEntity key={i} id={i} name={e.name} attr={e.attr} onAddAttr={this.onAddAttr}
-						             isDictionary={e.isDictionary} onDeleteEntity={this.onDeleteEntity}
-						             onDeleteAttr={this.onDeleteAttr}
-						             attrRef={attrDOM => this.storeAttrToOwner(attrDOM, i)} />
+					Object.values(entities).map((e, i) => {
+							return (
+								
+								<EmptyEntity key={i} id={i} name={e.name} attr={e.attr}
+								             onAddAttr={this.onAddAttr}
+								             isDictionary={e.isDictionary} onDeleteEntity={this.onDeleteEntity}
+								             onDeleteAttr={this.onDeleteAttr}
+								             setNameEntity={this.setNameEntity}
+								             setNameAttr={this.setNameAttr}
+								
+								/>
+							)
+						}
 					)
 				}
+			
 			</Cell>
 		
 		)
 	}
 }
+
+
+function mapStateToProps(state) {
+	return {
+		entities: state.entities
+	}
+}
+
+
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(entityActions, dispatch)
+	}
+}
+
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(EntitySection)
