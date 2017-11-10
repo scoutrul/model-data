@@ -19,12 +19,12 @@ export default createReducer({
 	[onChangeEntityName]: (state, payload) => {
 		return {
 			...state,
-			[payload.id]: {...state[payload.id], name: payload.name}
+			[payload.id]: { ...state[payload.id], name: payload.name }
 		}
 	},
 	[onDeleteEntity]: (state, payload) => {
 		return {
-			...state, entities: payload
+			...payload
 		}
 	},
 	[onAddAttr]: (state, payload) => {
@@ -49,10 +49,13 @@ export default createReducer({
 			[payload.ownerID]: {
 				...state[payload.ownerID],
 				attr: {
-					...state[payload.ownerID].attr[payload.selfID], name: payload.name, ownerID: payload.ownerID
+					...state[payload.ownerID].attr,
+					[payload.selfID]: {
+						...state[payload.ownerID].attr[payload.selfID], name: payload.name, ownerID: payload.ownerID}
 				}
-			}
+			
 		}
+	}
 	},
 	
 }, initialState);

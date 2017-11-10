@@ -26,15 +26,23 @@ class EntitySection extends Component {
 		}
 	};
 	
-	onAddEntity = (isDict = false) => {
-		let counter = _.size(this.props.entities);
+	onAddEntity = (isDict) => {
+		let entities = this.props.entities;
+		let counter = _.max(Object.keys(entities), function (o) {
+			return entities[o];
+		});
+		counter++;
+		console.log(counter)
+		
 		let newEntity = this.emptyEntity(counter, isDict);
 		this.props.actions.onAddEntity(newEntity)
 	};
 	
 	onDeleteEntity = id => {
-		let data = Object.keys(this.props.entities);
-		delete data[id];
+		console.log(this.props.entities)
+		let data = _.omit(this.props.entities, [id]);
+
+		console.log(data);
 		this.props.actions.onDeleteEntity(data)
 	};
 	
@@ -93,17 +101,17 @@ class EntitySection extends Component {
 					primary
 					menuItems={[
 						<ListItem key={1} primaryText="Простая сущность" onClick={() => this.onAddEntity()}/>,
-						<ListItem key={2} primaryText="Словарь" onClick={() => this.onAddEntity({ isDict: true })}/>
+						<ListItem key={2} primaryText="Словарь" onClick={() => this.onAddEntity(true)}/>
 					]}
 					iconChildren="chat"
 				>
 					Добавить
 				</MenuButton>
 				{
-					Object.values(entities).map((e, i) => {
+					Object.values(entities).map(e => {
 							return (
 								
-								<EmptyEntity key={i} id={i} name={e.name} attr={e.attr}
+								<EmptyEntity key={e.id} id={e.id} name={e.name} attr={e.attr}
 								             onAddAttr={this.onAddAttr}
 								             isDictionary={e.isDictionary} onDeleteEntity={this.onDeleteEntity}
 								             onDeleteAttr={this.onDeleteAttr}
