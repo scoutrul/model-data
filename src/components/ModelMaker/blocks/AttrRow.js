@@ -71,27 +71,13 @@ class AttrRow extends Component {
 		
 	};
 	
-	componentDidMount() {
-		// this.DrawModule(this.getLinks().source, this.getLinks().target)
-		// console.log(this.props.data)
-	}
-	
-
-	
-	nameChange = (ownerID, selfID) => {
-		// let payload;
-		// this.props.action.nameChange(payload)
-		console.log('name change hand')
-	};
-	
 	render() {
 		let { ownerID, id, name, onDeleteAttr, setNameAttr } = this.props;
 		
-		const makeItems = () => {
+		const menuItems = () => {
 			let initData = this.props.storeAttr;
 			
 			let fetchAttr = _.toArray(_.mapKeys(initData, 'id'));
-
 			
 			let temp = [];
 			fetchAttr.map((e, i) => {
@@ -123,7 +109,7 @@ class AttrRow extends Component {
 						id="select-field-with-elements"
 						label="Связь"
 						placeholder="Список"
-						menuItems={makeItems()}
+						menuItems={menuItems()}
 						itemLabel="name"
 						itemValue="id"
 						className="md-cell md-cell--6"
