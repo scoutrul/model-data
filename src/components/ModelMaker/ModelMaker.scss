@@ -47,10 +47,6 @@ $minWidth: 280px;
 		font-weight: 600;
 	}
 
-	.md-table-column--header {
-		padding: 0 10px 0 30px
-	}
-
 	.ModelMaker-grid {
 		margin: auto;
 		min-width: 50%;
@@ -75,8 +71,9 @@ $minWidth: 280px;
 		width: 100%;
 	}
 	.dataModelCell {
-		text-align: center;
-		padding: .5em;
+		text-align: left;
+		padding: 1em 2em;
+		width: 100%;
 	}
 	.dataHeaderIcon {
 		margin: 0 .5em auto 0;
@@ -91,7 +88,14 @@ $minWidth: 280px;
 			width: 100%;
 			overflow-x: visible;
 		}
-	;
+		.entity-header {
+			width: 100%;
+			margin: 0 10px;
+			input {
+				width: 100%;
+				margin: auto;
+			}
+		}
 		.add-attr-container {
 			width: 100%;
 			margin: auto;
@@ -110,14 +114,11 @@ $minWidth: 280px;
 	}
 
 	.entity-attr {
-		position: absolute;
-		left: 0;
-		top: 0;
-		min-width: $minWidth;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		input {
+			width: 100%;
+			padding: 0 10px;
+			margin: 0 10px;
+		}
 	}
 
 	.md-tile-text--primary {
@@ -153,11 +154,28 @@ $minWidth: 280px;
 	}
 
 	.attr-row {
-		padding: 0 0 0 50px;
+		padding: 0 10px 0 5px;
 		position: relative;
 	}
 
 	.emptyEntity-delete {
-		padding: 0 10px 0 0
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	h3.md-text--secondary{
+		padding:0;
+	}
+	.md-text--secondary {
+		padding: 5px;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.data-section {
+		.emptyEntity-delete {
+			min-width: 80px;
+		}
 	}
 }

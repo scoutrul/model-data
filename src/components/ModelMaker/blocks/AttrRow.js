@@ -7,7 +7,7 @@ import * as initData from '../../../reducers/initData'
 import { Subheader, SelectField } from 'react-md';
 import {
 	TableRow, TableColumn,
-	MenuButtonColumn, ListItem, FontIcon
+	MenuButtonColumn, ListItem, FontIcon, Button
 } from 'react-md';
 
 class AttrRow extends Component {
@@ -76,9 +76,7 @@ class AttrRow extends Component {
 		
 		const menuItems = () => {
 			let initData = this.props.storeAttr;
-			
 			let fetchAttr = _.toArray(_.mapKeys(initData, 'id'));
-			
 			let temp = [];
 			fetchAttr.map((e, i) => {
 					temp.push(<Subheader key={i}
@@ -98,31 +96,21 @@ class AttrRow extends Component {
 			<TableRow className="attrRow-child">
 				
 				<TableColumn className='attr-row'>
-					<div className='entity-attrTEMP' id={`E${ownerID}_A${id}`}>
-						<input type="text" onChange={(e) => setNameAttr(ownerID, id, e.target.value)} value={name}/>
+					<div className='entity-attr' id={`E${ownerID}_A${id}`}>
+						<input type="text" onChange={(e) => setNameAttr(ownerID, id, e.target.value)} defaultValue={name} placeholder='Введите название'/>
 					</div>
 				</TableColumn>
 				
-				{/*{Список для связей}*/}
 				<TableColumn className='attr-row'>
-					<SelectField
-						id="select-field-with-elements"
-						label="Связь"
-						placeholder="Список"
-						menuItems={menuItems()}
-						itemLabel="name"
-						itemValue="id"
-						className="md-cell md-cell--6"
-						sameWidth
-						onChange={this.onChange}
-					/>
+					<Button icon >share</Button>
 				</TableColumn>
 				
 				<MenuButtonColumn className="emptyEntity-delete"
 				                  icon
 				                  centered
-				                  menuItems={<ListItem primaryText="Удалить аттрибут"
-				                                       onClick={() => onDeleteAttr(ownerID, id)}
+				                  menuItems={
+				                  	<ListItem primaryText="Удалить аттрибут"
+				                              onClick={() => onDeleteAttr(ownerID, id)}
 				                  />}
 				>
 					<FontIcon error className="delete-icons">clear</FontIcon>

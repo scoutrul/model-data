@@ -7,35 +7,32 @@ import {
 
 import { AttrRow } from './'
 
-export class EmptyEntity extends Component {
+export class EmptyLink extends Component {
 	
 	render() {
 		let {
-			isDictionary, onAddEntityAttr, name,
-			attr, id, onDeleteEntity,
+			name,
+			attr, id,
 			isLink, linkType,
-			setEntityAttrName,
-			onDeleteEntityAttr,
-			setEntityName
+			setNameLink,
+			onDeleteLinkAttr,
+			setLinkAttrName,
+			onDeleteLink,
+			onAddLinkAttr
 		} = this.props;
 		
-		const typeOfEntity = () => {
-			if (isLink) {
-				return linkType
-			}
-			else {
-				return isDictionary ? 'Словарь' : 'Простая сущность'
-			}
-		};
 		const apiAttr = {
-			setNameAttr: setEntityAttrName,
-			onDeleteAttr: onDeleteEntityAttr
+			onDeleteLinkAttr,
+			onDeleteLink,
+			onAddLinkAttr,
+			setNameAttr: setLinkAttrName,
+			onDeleteAttr: onDeleteLinkAttr
 		};
 		
 		return (
 			<div>
 				<div className="entity-type">
-					{typeOfEntity()}
+					Тип ссылки
 				</div>
 				
 				<Card className="entity">
@@ -48,18 +45,19 @@ export class EmptyEntity extends Component {
 										lineDirection="center"
 										placeholder="Название"
 										defaultValue={name}
-										className="md-cell md-cell--bottom entity-header"
-										onChange={(e) => setEntityName(e, id)}
+										className="md-cell md-cell--bottom"
+										style={{ width: '100%' }}
+										onChange={(e) => setNameLink(e, id)}
 									/>
 								</TableColumn>
-								<TableColumn className="emptyEntity-header">
+								<TableColumn grow className="emptyEntity-header">
 									{null}
 								</TableColumn>
 								<MenuButtonColumn className="emptyEntity-delete"
 								                  icon
 								                  centered
 								                  menuItems={<ListItem primaryText="Удалить сущность"
-								                                       onClick={() => onDeleteEntity(id)}/>}
+								                                       onClick={() => onDeleteLink(id)}/>}
 								>
 									<FontIcon error className="delete-icons">delete</FontIcon>
 								</MenuButtonColumn>
@@ -77,7 +75,7 @@ export class EmptyEntity extends Component {
 					<div
 						className="md-divider-border md-divider-border--top md-divider-border--bottom add-attr-container">
 						<Button icon primary className='entity-add-button'
-						        onClick={() => onAddEntityAttr(id)}>add_circle</Button>
+						        onClick={() => onAddLinkAttr(id)}>add_circle</Button>
 					</div>
 				
 				</Card>

@@ -4,13 +4,12 @@ const initialState =
 	{
 		data: '',
 		modelList: '',
-		storeAttr: ''
 	}
 ;
 
 export const fetchData = createAction('fetch init data');
 export const dataList = createAction('fetch Data Model list');
-export const storeAttr = createAction('store attr from data');
+
 
 
 export default createReducer({
@@ -22,12 +21,6 @@ export default createReducer({
 	[dataList]: (state, payload) => {
 		return {
 			...state, modelList: payload
-			
-		}
-	},
-	[storeAttr]: (state, payload) => {
-		return {
-			...state, storeAttr: payload
 			
 		}
 	},

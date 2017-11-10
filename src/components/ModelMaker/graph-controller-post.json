@@ -1,0 +1,132 @@
+{
+  "built": true,
+  "id": 0,
+  "name": "string",
+  "sourceNodes": [
+    {
+      "dictionary": true,
+      "id": 0,
+      "label": "string",
+      "links": [
+        {
+          "id": 0,
+          "label": "string",
+          "properties": [
+            {
+              "id": 0,
+              "indexed": true,
+              "name": "string",
+              "value": {}
+            }
+          ],
+          "sourceProperty": "string",
+          "target": {
+            "dictionary": true,
+            "id": 0,
+            "label": "string",
+            "links": [
+              {}
+            ],
+            "properties": [
+              {
+                "id": 0,
+                "indexed": true,
+                "name": "string",
+                "value": {}
+              }
+            ],
+            "title": "string"
+          },
+          "targetProperty": "string"
+        }
+      ],
+      "properties": [
+        {
+          "id": 0,
+          "indexed": true,
+          "name": "string",
+          "value": {}
+        }
+      ],
+      "sourceEntity": "string",
+      "title": "string"
+    }
+  ],
+  "sourceTransitLinks": [
+    {
+      "from": {
+        "dictionary": true,
+        "id": 0,
+        "label": "string",
+        "links": [
+          {
+            "id": 0,
+            "label": "string",
+            "properties": [
+              {
+                "id": 0,
+                "indexed": true,
+                "name": "string",
+                "value": {}
+              }
+            ],
+            "sourceProperty": "string",
+            "target": {},
+            "targetProperty": "string"
+          }
+        ],
+        "properties": [
+          {
+            "id": 0,
+            "indexed": true,
+            "name": "string",
+            "value": {}
+          }
+        ],
+        "title": "string"
+      },
+      "id": 0,
+      "label": "string",
+      "properties": [
+        {
+          "id": 0,
+          "indexed": true,
+          "name": "string",
+          "value": {}
+        }
+      ],
+      "sourceEntity": "string",
+      "to": {
+        "dictionary": true,
+        "id": 0,
+        "label": "string",
+        "links": [
+          {
+            "id": 0,
+            "label": "string",
+            "properties": [
+              {
+                "id": 0,
+                "indexed": true,
+                "name": "string",
+                "value": {}
+              }
+            ],
+            "sourceProperty": "string",
+            "target": {},
+            "targetProperty": "string"
+          }
+        ],
+        "properties": [
+          {
+            "id": 0,
+            "indexed": true,
+            "name": "string",
+            "value": {}
+          }
+        ],
+        "title": "string"
+      }
+    }
+  ]
+}

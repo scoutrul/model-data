@@ -17,11 +17,19 @@ class EntitySection extends Component {
 			attr: {
 				0: {
 					id: 0,
+					name: 'start time',
+					startTime: ''
+				},
+				1: {
+					id: 1,
+					name: 'end time',
+					endTime: ''
+				},
+				2: {
+					id: 2,
 					name: 'Аттрибут',
-				}
-			},
-			start: '00-00-00',
-			end: '00-00-00'
+				},
+			}
 		}
 	};
 	
@@ -29,7 +37,7 @@ class EntitySection extends Component {
 		//find maximum id and ++ it for new id
 		let entities = this.props.entities;
 		let counter = _.max(Object.keys(entities), o => entities[o]);
-		counter++;
+		(counter) ? counter++ : 0;
 		let newEntity = this.emptyEntity(counter, isDict);
 		this.props.actions.onAddEntity(newEntity)
 	};
@@ -39,49 +47,33 @@ class EntitySection extends Component {
 		this.props.actions.onDeleteEntity(data)
 	};
 	
-	onAddAttr = (ownerID, name = 'Новый аттрибут') => {
+	onAddEntityAttr = (ownerID, name = '') => {
 		//find maximum id and ++ it for new id
 		let entities = this.props.entities[ownerID].attr;
 		let selfID = _.max(Object.keys(entities), o => entities[o]);
-		selfID++;
+		(selfID) ? selfID++ : 0;
 		let payload = { ownerID, selfID, name };
-		this.props.actions.onAddAttr(payload)
-		
+		this.props.actions.onAddEntityAttr(payload)
 	};
 	
-	onDeleteAttr = (ownerID, selfID) => {
-
+	onDeleteEntityAttr = (ownerID, selfID) => {
 		let data = _.omit(this.props.entities[ownerID].attr, [selfID]);
-		let payload = { data, selfID}
-		this.props.actions.onDeleteAttr(data)
-		
-	};
-	storeAttrToOwner = (attrDOM, ownerEntityID) => {
-		// console.log(attrDOM, ownerEntityID)
-		// let data = this.state.attrDOM.slice();
-		// data.push({
-		// 	attrDOM,
-		// 	ownerEntityID
-		// });
-		// this.setState({ attrDOM: data })
+		let payload = { data, ownerID };
+		this.props.actions.onDeleteEntityAttr(payload)
 	};
 	
-	setNameEntity = (name, id) => {
+	setEntityName = (name, id) => {
 		let payload = { name, id };
-		this.props.actions.onChangeEntityName(payload)
+		this.props.actions.setEntityName(payload)
 	};
 	
-	setNameAttr = (ownerID, selfID, name) => {
+	setEntityAttrName = (ownerID, selfID, name) => {
 		let payload = { ownerID, selfID, name };
-		this.props.actions.onChangeAttrName(payload)
+		this.props.actions.setEntityAttrName(payload)
 	};
 	
 	componentDidMount() {
-		this.props.actions.onAddEntity(this.emptyEntity(0))
-	}
-	
-	componentDidUpdate() {
-		// console.log(this)
+		this.props.actions.onAddEntity(this.emptyEntity())
 	}
 	
 	render() {
@@ -105,13 +97,13 @@ class EntitySection extends Component {
 				{
 					Object.values(entities).map((e, i) => {
 							return (
-								
 								<EmptyEntity key={i} id={e.id} name={e.name} attr={e.attr}
-								             onAddAttr={this.onAddAttr}
-								             isDictionary={e.isDictionary} onDeleteEntity={this.onDeleteEntity}
-								             onDeleteAttr={this.onDeleteAttr}
-								             setNameEntity={this.setNameEntity}
-								             setNameAttr={this.setNameAttr}
+								             isDictionary={e.isDictionary}
+								             onAddEntityAttr={this.onAddEntityAttr}
+								             onDeleteEntity={this.onDeleteEntity}
+								             onDeleteEntityAttr={this.onDeleteEntityAttr}
+								             setEntityName={this.setEntityName}
+								             setEntityAttrName={this.setEntityAttrName}
 								
 								/>
 							)
@@ -125,13 +117,11 @@ class EntitySection extends Component {
 	}
 }
 
-
 function mapStateToProps(state) {
 	return {
 		entities: state.entities
 	}
 }
-
 
 function mapDispatchToProps(dispatch) {
 	return {

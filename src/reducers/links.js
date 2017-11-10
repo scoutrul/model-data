@@ -2,26 +2,26 @@ import { createAction, createReducer } from 'redux-act';
 
 const initialState = {};
 
-export const onAddEntity = createAction('add entity');
-export const onDeleteEntity = createAction('del entity');
-export const onAddEntityAttr = createAction('add attr');
-export const onDeleteEntityAttr = createAction('del attr');
-export const setEntityName = createAction('change entity name');
-export const setEntityAttrName = createAction('change attr name');
+export const onAddLink = createAction('add link');
+export const onDeleteLink = createAction('del link');
+export const onAddLinkAttr = createAction('add link attr');
+export const onDeleteLinkAttr = createAction('del link attr');
+export const setLinkName = createAction('change link name');
+export const setLinkAttrName = createAction('change link attr name');
 
 export default createReducer({
-	[onAddEntity]: (state, payload) => {
+	[onAddLink]: (state, payload) => {
 		return {
 			...state,
 			[payload.id]: payload
 		}
 	},
-	[onDeleteEntity]: (state, payload) => {
+	[onDeleteLink]: (state, payload) => {
 		return {
 			...payload
 		}
 	},
-	[onAddEntityAttr]: (state, payload) => {
+	[onAddLinkAttr]: (state, payload) => {
 		return {
 			...state,
 			[payload.ownerID]: {
@@ -30,15 +30,13 @@ export default createReducer({
 					...state[payload.ownerID].attr,
 					[payload.selfID]: {
 						name: payload.name,
-						id: payload.selfID,
-						start: '000-000',
-						end: '000-000',
+						id: payload.selfID
 					}
 				}
 			}
 		};
 	},
-	[onDeleteEntityAttr]: (state, payload) => {
+	[onDeleteLinkAttr]: (state, payload) => {
 		return {
 			...state,
 			[payload.ownerID]: {
@@ -47,13 +45,14 @@ export default createReducer({
 			}
 		}
 	},
-	[setEntityName]: (state, payload) => {
+	[setLinkName]: (state, payload) => {
 		return {
 			...state,
 			[payload.id]: { ...state[payload.id], name: payload.name }
 		}
 	},
-	[setEntityAttrName]: (state, payload) => {
+
+	[setLinkAttrName]: (state, payload) => {
 		return {
 			...state,
 			[payload.ownerID]: {

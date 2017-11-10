@@ -35,9 +35,6 @@
 .ModelMaker .md-card-title--title {
   font-weight: 600; }
 
-.ModelMaker .md-table-column--header {
-  padding: 0 10px 0 30px; }
-
 .ModelMaker .ModelMaker-grid {
   margin: auto;
   min-width: 50%;
@@ -59,8 +56,9 @@
   width: 100%; }
 
 .ModelMaker .dataModelCell {
-  text-align: center;
-  padding: .5em; }
+  text-align: left;
+  padding: 1em 2em;
+  width: 100%; }
 
 .ModelMaker .dataHeaderIcon {
   margin: 0 .5em auto 0; }
@@ -77,6 +75,12 @@
   .ModelMaker .entity .md-data-table--responsive {
     width: 100%;
     overflow-x: visible; }
+  .ModelMaker .entity .entity-header {
+    width: 100%;
+    margin: 0 10px; }
+    .ModelMaker .entity .entity-header input {
+      width: 100%;
+      margin: auto; }
   .ModelMaker .entity .add-attr-container {
     width: 100%;
     margin: auto;
@@ -91,15 +95,10 @@
   display: flex;
   margin: auto; }
 
-.ModelMaker .entity-attr {
-  position: absolute;
-  left: 0;
-  top: 0;
-  min-width: 280px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
+.ModelMaker .entity-attr input {
+  width: 100%;
+  padding: 0 10px;
+  margin: 0 10px; }
 
 .ModelMaker .md-tile-text--primary {
   white-space: nowrap; }
@@ -129,8 +128,22 @@
   margin: 0 auto 1em; }
 
 .ModelMaker .attr-row {
-  padding: 0 0 0 50px;
+  padding: 0 10px 0 5px;
   position: relative; }
 
 .ModelMaker .emptyEntity-delete {
-  padding: 0 10px 0 0; }
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.ModelMaker h3.md-text--secondary {
+  padding: 0; }
+
+.ModelMaker .md-text--secondary {
+  padding: 5px;
+  justify-content: center;
+  text-align: center; }
+
+.ModelMaker .data-section .emptyEntity-delete {
+  min-width: 80px; }

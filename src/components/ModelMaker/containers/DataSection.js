@@ -20,7 +20,6 @@ class DataSection extends Component {
 			this.props.actions.fetchData(data)
 		};
 		await GET_DATA(`http://192.168.50.115:8080/import-service/api/data/${id}`);
-		await this.props.actions.storeAttr(data.model.entities)
 	};
 	
 	
