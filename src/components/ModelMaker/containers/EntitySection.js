@@ -18,7 +18,6 @@ class EntitySection extends Component {
 				0: {
 					id: 0,
 					name: 'Аттрибут',
-					links: { 0: { to: 0 } }
 				}
 			},
 			start: '00-00-00',
@@ -26,31 +25,35 @@ class EntitySection extends Component {
 		}
 	};
 	
-	onAddEntity = (isDict = false) => {
-		let counter = _.size(this.props.entities);
+	onAddEntity = (isDict) => {
+		//find maximum id and ++ it for new id
+		let entities = this.props.entities;
+		let counter = _.max(Object.keys(entities), o => entities[o]);
+		counter++;
 		let newEntity = this.emptyEntity(counter, isDict);
 		this.props.actions.onAddEntity(newEntity)
 	};
 	
 	onDeleteEntity = id => {
-		let data = Object.keys(this.props.entities);
-		delete data[id];
+		let data = _.omit(this.props.entities, [id]);
 		this.props.actions.onDeleteEntity(data)
 	};
 	
-	onAddAttr = ownerID => {
-		console.log(ownerID)
-		let data = {
-			name: `new ${ownerID}`
-		};
+	onAddAttr = (ownerID, name = 'Новый аттрибут') => {
+		//find maximum id and ++ it for new id
+		let entities = this.props.entities[ownerID].attr;
+		let selfID = _.max(Object.keys(entities), o => entities[o]);
+		selfID++;
+		let payload = { ownerID, selfID, name };
+		this.props.actions.onAddAttr(payload)
 		
-		this.props.actions.onAddAttr(ownerID, data)
 	};
 	
 	onDeleteAttr = (ownerID, selfID) => {
-		// let data = this.props.entities.slice();
-		// delete data[ownerID].attr[selfID];
-		// this.props.actions.onDeleteAttr(data)
+
+		let data = _.omit(this.props.entities[ownerID].attr, [selfID]);
+		let payload = { data, selfID}
+		this.props.actions.onDeleteAttr(data)
 		
 	};
 	storeAttrToOwner = (attrDOM, ownerEntityID) => {
@@ -93,7 +96,7 @@ class EntitySection extends Component {
 					primary
 					menuItems={[
 						<ListItem key={1} primaryText="Простая сущность" onClick={() => this.onAddEntity()}/>,
-						<ListItem key={2} primaryText="Словарь" onClick={() => this.onAddEntity({ isDict: true })}/>
+						<ListItem key={2} primaryText="Словарь" onClick={() => this.onAddEntity(true)}/>
 					]}
 					iconChildren="chat"
 				>
@@ -103,7 +106,7 @@ class EntitySection extends Component {
 					Object.values(entities).map((e, i) => {
 							return (
 								
-								<EmptyEntity key={i} id={i} name={e.name} attr={e.attr}
+								<EmptyEntity key={i} id={e.id} name={e.name} attr={e.attr}
 								             onAddAttr={this.onAddAttr}
 								             isDictionary={e.isDictionary} onDeleteEntity={this.onDeleteEntity}
 								             onDeleteAttr={this.onDeleteAttr}

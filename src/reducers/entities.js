@@ -19,27 +19,37 @@ export default createReducer({
 	[onChangeEntityName]: (state, payload) => {
 		return {
 			...state,
-			[payload.id]: {...state[payload.id], name: payload.name}
+			[payload.id]: { ...state[payload.id], name: payload.name }
 		}
 	},
 	[onDeleteEntity]: (state, payload) => {
 		return {
-			...state, entities: payload
+			...payload
 		}
 	},
 	[onAddAttr]: (state, payload) => {
-		let ownerID = payload.ownerID;
+		console.log(payload)
 		return {
 			...state,
-			entities: {
-				...state.entities,
-				[ownerID]: payload.data
+			[payload.ownerID]: {
+				...state[payload.ownerID],
+				attr: {
+					...state[payload.ownerID].attr,
+					[payload.selfID]: {
+						name: 'huy',
+						id: payload.selfID
+					}
+				}
 			}
 		};
 	},
 	[onDeleteAttr]: (state, payload) => {
 		return {
-			...state, entities: payload
+			...state,
+			[payload.ownerID]: {
+				...state[payload.ownerID],
+				attr: payload
+			}
 		}
 	},
 	
@@ -49,8 +59,14 @@ export default createReducer({
 			[payload.ownerID]: {
 				...state[payload.ownerID],
 				attr: {
-					...state[payload.ownerID].attr[payload.selfID], name: payload.name, ownerID: payload.ownerID
+					...state[payload.ownerID].attr,
+					[payload.selfID]: {
+						...state[payload.ownerID].attr[payload.selfID],
+						name: payload.name,
+						ownerID: payload.ownerID
+					}
 				}
+				
 			}
 		}
 	},
