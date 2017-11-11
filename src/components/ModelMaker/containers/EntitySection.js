@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -94,23 +95,30 @@ class EntitySection extends Component {
 				>
 					Добавить
 				</MenuButton>
-				{
-					Object.values(entities).map((e, i) => {
-							return (
-								<EmptyEntity key={i} id={e.id} name={e.name} attr={e.attr}
-								             isDictionary={e.isDictionary}
-								             onAddEntityAttr={this.onAddEntityAttr}
-								             onDeleteEntity={this.onDeleteEntity}
-								             onDeleteEntityAttr={this.onDeleteEntityAttr}
-								             setEntityName={this.setEntityName}
-								             setEntityAttrName={this.setEntityAttrName}
-								
-								/>
-							)
-						}
-					)
-				}
-			
+				<ReactCSSTransitionGroup
+					transitionAppearTimeout={150}
+					transitionEnterTimeout={150}
+					transitionLeaveTimeout={150}
+					transitionAppear={true}
+					transitionName="fade"
+				>
+					{
+						Object.values(entities).map((e, i) => {
+								return (
+									<EmptyEntity key={i} id={e.id} name={e.name} attr={e.attr}
+									             isDictionary={e.isDictionary}
+									             onAddEntityAttr={this.onAddEntityAttr}
+									             onDeleteEntity={this.onDeleteEntity}
+									             onDeleteEntityAttr={this.onDeleteEntityAttr}
+									             setEntityName={this.setEntityName}
+									             setEntityAttrName={this.setEntityAttrName}
+									
+									/>
+								)
+							}
+						)
+					}
+				</ReactCSSTransitionGroup>
 			</Cell>
 		
 		)
@@ -128,7 +136,6 @@ function mapDispatchToProps(dispatch) {
 		actions: bindActionCreators(entityActions, dispatch)
 	}
 }
-
 
 export default connect(
 	mapStateToProps,
