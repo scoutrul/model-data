@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffaa1e90-86f5-4976-bf50-181aa2c925db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/utils/utils.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/ModelMaker/OpenedModelDialog.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/ModelDialog.js" afterPath="$PROJECT_DIR$/src/components/ModelMaker/ModelDialog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/ModelMaker.css" afterPath="$PROJECT_DIR$/src/components/ModelMaker/ModelMaker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/ModelMaker.scss" afterPath="$PROJECT_DIR$/src/components/ModelMaker/ModelMaker.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/blocks/AttrRow.js" afterPath="$PROJECT_DIR$/src/components/ModelMaker/blocks/AttrRow.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/blocks/EmptyEntity.js" afterPath="$PROJECT_DIR$/src/components/ModelMaker/blocks/EmptyEntity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/blocks/EmptyLink.js" afterPath="$PROJECT_DIR$/src/components/ModelMaker/blocks/EmptyLink.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/containers/DataSection.js" afterPath="$PROJECT_DIR$/src/components/ModelMaker/containers/DataSection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/containers/EntitySection.js" afterPath="$PROJECT_DIR$/src/components/ModelMaker/containers/EntitySection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/containers/LinkSection.js" afterPath="$PROJECT_DIR$/src/components/ModelMaker/containers/LinkSection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ModelMaker/graph-controller-post.json" afterPath="$PROJECT_DIR$/src/components/ModelMaker/graph-controller-post.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.scss" afterPath="$PROJECT_DIR$/src/index.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store.js" afterPath="$PROJECT_DIR$/src/store.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,8 +19,8 @@
       <file leaf-file-name="EmptyEntity.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/ModelMaker/blocks/EmptyEntity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="71" column="26" lean-forward="true" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+            <state relative-caret-position="312">
+              <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -235,12 +213,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510523375216</updated>
-      <workItem from="1510523383534" duration="3097000" />
+      <workItem from="1510523383534" duration="3319000" />
     </task>
+    <task id="LOCAL-00001" summary="CSSTransition and time pickers and some logic">
+      <created>1510526553071</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1510526553071</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3097000" />
+    <option name="totallyTimeSpent" value="3319000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="1410" extended-state="0" />
@@ -269,8 +255,38 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="CSSTransition and time pickers and some logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSSTransition and time pickers and some logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -327,8 +343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ModelMaker/blocks/EmptyEntity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="71" column="26" lean-forward="true" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+        <state relative-caret-position="312">
+          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
