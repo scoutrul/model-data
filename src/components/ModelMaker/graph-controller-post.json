@@ -20,6 +20,7 @@
             }
           ],
           "sourceProperty": "string",
+          "targetProperty": "string",
           "target": {
             "dictionary": true,
             "id": 0,
@@ -36,8 +37,7 @@
               }
             ],
             "title": "string"
-          },
-          "targetProperty": "string"
+          }
         }
       ],
       "properties": [

@@ -10,13 +10,14 @@ import { AttrRow } from './'
 export class EmptyEntity extends Component {
 	
 	render() {
+		
 		let {
 			isDictionary, onAddEntityAttr, name,
 			attr, id, onDeleteEntity,
 			isLink, linkType,
 			setEntityAttrName,
 			onDeleteEntityAttr,
-			setEntityName
+			setEntityName,
 		} = this.props;
 		
 		const typeOfEntity = () => {
@@ -27,13 +28,17 @@ export class EmptyEntity extends Component {
 				return isDictionary ? 'Словарь' : 'Простая сущность'
 			}
 		};
+		const { startTime, endTime } = this.props.attr;
 		const apiAttr = {
 			setNameAttr: setEntityAttrName,
-			onDeleteAttr: onDeleteEntityAttr
+			onDeleteAttr: onDeleteEntityAttr,
+			ownerID: id
 		};
-		
 		return (
+			
 			<div>
+				
+				
 				<div className="entity-type">
 					{typeOfEntity()}
 				</div>
@@ -68,7 +73,13 @@ export class EmptyEntity extends Component {
 						
 						<TableBody id='attrRow'>
 							{attr && Object.values(attr).map(el =>
-								<AttrRow key={el.id} id={el.id} name={el.name} ownerID={id}  {...apiAttr}/>
+								<AttrRow key={el.id}
+								         id={el.id}
+								         name={el.name}
+								         disabled={el.disabled}
+								         startTimeAttr={el.startTime}
+								         endTimeAttr={el.endTime}
+								         {...apiAttr}/>
 							)
 							}
 						</TableBody>
@@ -77,11 +88,13 @@ export class EmptyEntity extends Component {
 					<div
 						className="md-divider-border md-divider-border--top md-divider-border--bottom add-attr-container">
 						<Button icon primary className='entity-add-button'
-						        onClick={() => onAddEntityAttr(id)}>add_circle</Button>
+						        onClick={() => onAddEntityAttr(id)}>add_circle </Button>
 					</div>
 				
 				</Card>
 			</div>
+		
+		
 		)
 	}
 }

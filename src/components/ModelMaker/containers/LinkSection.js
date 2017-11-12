@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -49,7 +50,7 @@ class LinkSection extends Component {
 		//find maximum id and ++ it for new id
 		let entities = this.props.links;
 		let counter = _.max(Object.keys(entities), o => entities[o]);
-		(counter)?counter++:0;
+		(counter) ? counter++ : counter = 0;
 		let newEntity = this.emptyLink(counter, isDict);
 		this.props.actions.onAddLink(newEntity)
 	};
@@ -63,18 +64,18 @@ class LinkSection extends Component {
 		//find maximum id and ++ it for new id
 		let entities = this.props.links[ownerID].attr;
 		let selfID = _.max(Object.keys(entities), o => entities[o]);
-		(selfID)?selfID++:0;
+		(selfID) ? selfID++ : selfID = 0;
 		let payload = { ownerID, selfID, name };
 		this.props.actions.onAddLinkAttr(payload)
 	};
 	
 	onDeleteLinkAttr = (ownerID, selfID) => {
 		let data = _.omit(this.props.links[ownerID].attr, [selfID]);
-		let payload = { data, ownerID};
+		let payload = { data, ownerID };
 		this.props.actions.onDeleteLinkAttr(payload)
 	};
 	
-	setLinkName= (name, id) => {
+	setLinkName = (name, id) => {
 		let payload = { name, id };
 		this.props.actions.setLinkName(payload)
 	};
@@ -110,18 +111,27 @@ class LinkSection extends Component {
 				>
 					Добавить
 				</MenuButton>
-				
-				{
-					Object.values(links).map((e, i) => {
-							return (
-								<EmptyLink key={e.id} id={e.id} name={e.name} attr={e.attr} onAddLinkAttr={this.onAddLinkAttr}
-								             isLink={true} linkType={e.linkType} onDeleteLink={this.onDeleteLink}
-								             onDeleteLinkAttr={this.onDeleteLinkAttr}
-								             />
-							)
-						}
-					)
-				}
+				<ReactCSSTransitionGroup
+					transitionAppearTimeout={150}
+					transitionEnterTimeout={150}
+					transitionLeaveTimeout={150}
+					transitionAppear={true}
+					transitionName="fade"
+				>
+					{
+						Object.values(links).map((e, i) => {
+								return (
+									<EmptyLink key={e.id} id={e.id} name={e.name} attr={e.attr} onAddLinkAttr={this.onAddLinkAttr}
+									           isLink={true} linkType={e.linkType} onDeleteLink={this.onDeleteLink}
+									           onDeleteLinkAttr={this.onDeleteLinkAttr}
+									           setLinkName={this.setLinkName}
+									           setLinkAttrName={this.setLinkAttrName}
+									/>
+								)
+							}
+						)
+					}
+				</ReactCSSTransitionGroup>
 			
 			</Cell>
 		)

@@ -18,13 +18,7 @@ export default function configureStore(initialState) {
 			applyMiddleware(loggerMiddleware, thunkMiddleware),
 		));
 	
-	if (module.hot) {
-		// Enable Webpack hot module replacement for reducers
-		module.hot.accept('./reducers/index', () => {
-			const nextReducer = require('./reducers/index').default;
-			store.replaceReducer(nextReducer)
-		})
-	}
+
 	// при старте загружаем список моделей данных
 	FETCH_MODEL_LIST('http://192.168.50.115:8080/import-service/api/data', store, dataList)
 	

@@ -42,7 +42,13 @@ export class ModelDialog extends Component {
 					<Cell>
 						<TextField id="jsonchik"/>
 						
-						<pre>{JSON.stringify(this.state, null, '\t')}</pre>
+						<pre>
+							+ Добавить транзишн на добавление
+							+ Исправить удаление неверно
+							Деактивировать обязательные поля
+							Добавить АЙДИ
+							
+						</pre>
 					
 					</Cell>
 				</DialogContainer>
@@ -63,7 +69,7 @@ export class ModelDialog extends Component {
 						title="Создание нового графа"
 						titleId="simple-full-page-dialog-title"
 						nav={<Button icon onClick={this.HideNewGraphModal}>close</Button>}
-						actions={[<Button flat onClick={() => this.setState({ JSON: !this.state.JSON })}>JSON</Button>,
+						actions={[<Button flat onClick={() => this.setState({ JSON: !this.state.JSON })}>TASK</Button>,
 							<Button flat onClick={() => alert('save')}>Сохранить</Button>]}
 					/>
 					<Grid className="ModelMaker-grid">

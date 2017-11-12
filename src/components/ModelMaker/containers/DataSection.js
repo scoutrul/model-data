@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { bindActionCreators } from 'redux'
 import { css } from '../styles'
 import {
@@ -24,7 +25,7 @@ class DataSection extends Component {
 	
 	
 	componentWillMount() {
-
+	
 	}
 	
 	componentDidUpdate() {
@@ -36,41 +37,49 @@ class DataSection extends Component {
 			<Cell className="ModelMaker-section">
 				<h3 className="section-header">{this.props.data.model && `Данные:`}</h3>
 				{this.props.data.model &&
-					<MenuButton
-						id="disabledHeader"
-						raised
-						primary
-						disabled
-						menuItems={[]}
-						iconChildren="folder"
-						style={{ color: '#6f6f6f', wontWeight: 'bold' }}>
-						{this.props.data.model.name}
-					</MenuButton>
+				<MenuButton
+					id="disabledHeader"
+					raised
+					primary
+					disabled
+					menuItems={[]}
+					iconChildren="folder"
+					style={{ color: '#6f6f6f', wontWeight: 'bold' }}>
+					{this.props.data.model.name}
+				</MenuButton>
 				}
 				{!this.props.data.model &&
-					<SelectField
-						id="select-data-model"
-						placeholder="Выбор модели"
-						menuItems={this.props.modelList.values}
-						itemLabel="name"
-						itemValue="id"
-						deleteKeys={['connection', 'schemaName']}
-						required
-						position={SelectField.Positions.BELOW}
-						sameWidth
-						onChange={(e) => this.GET_IMPORTED_DATA(e)}
-					/>
+				<SelectField
+					id="select-data-model"
+					placeholder="Выбор модели"
+					menuItems={this.props.modelList.values}
+					itemLabel="name"
+					itemValue="id"
+					deleteKeys={['connection', 'schemaName']}
+					required
+					position={SelectField.Positions.BELOW}
+					sameWidth
+					onChange={(e) => this.GET_IMPORTED_DATA(e)}
+				/>
 				}
-				{this.props.data.model && this.props.data.model.entities.map(e =>
-					<DataEntity
-						key={e.id}
-						name={e.name}
-						description={e.description}
-						attr={e.attributes}
-						style={css.flexEntity.item}
-					/>
-				)
-				}
+				<ReactCSSTransitionGroup
+					transitionAppearTimeout={150}
+					transitionEnterTimeout={150}
+					transitionLeaveTimeout={150}
+					transitionAppear={true}
+					transitionName="fade"
+				>
+					{this.props.data.model && this.props.data.model.entities.map(e =>
+						<DataEntity
+							key={e.id}
+							name={e.name}
+							description={e.description}
+							attr={e.attributes}
+							style={css.flexEntity.item}
+						/>
+					)
+					}
+				</ReactCSSTransitionGroup>
 			</Cell>
 		
 		)

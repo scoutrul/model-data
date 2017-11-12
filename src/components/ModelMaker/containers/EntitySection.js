@@ -18,18 +18,19 @@ class EntitySection extends Component {
 			attr: {
 				0: {
 					id: 0,
-					name: 'start time',
-					startTime: ''
+					name: 'ID',
+					disabled: true
 				},
 				1: {
 					id: 1,
-					name: 'end time',
-					endTime: ''
+					name: 'start time',
+					startTime: true
 				},
 				2: {
 					id: 2,
-					name: 'Аттрибут',
-				},
+					name: 'end time',
+					endTime: 'true'
+				}
 			}
 		}
 	};

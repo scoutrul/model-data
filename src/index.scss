@@ -1,67 +1,69 @@
 @import 'globals';
+
 @include react-md-everything;
 body {
-    margin: 0;
+  margin: 0;
 }
 
 img,
 svg {
-    display: block;
+  display: block;
 }
 
 $blue: #3bbfce;
 p {
-    color: $blue;
+  color: $blue;
 }
 
 .App {
-    .graph-holder {
-        // background: $md-blue-grey-50;
-        // color: $md-blue-grey-500;
-    }
-    .menu-holder {
-        // background: $md-blue-grey-100;
-        // color: $md-blue-grey-500;
-    }
-    .cursor-default {
-        cursor: default;
-    }
-    .cursor-pointer {
-        cursor: pointer;
-    }
-    .graph-holder {
-        margin: 0;
-        padding: 0;
-    }
-    .hidden {
-        display: none;
-    }
-    .loader {
-        position: absolute;
-    }
-    .absolute {
-        position: absolute;
-    }
-    .table-expanded {
-        position: absolute;
-        z-index: 10;
-    }
-    .clear {
-        display: block;
-        clear: both;
-    }
+  .graph-holder {
+    // background: $md-blue-grey-50;
+    // color: $md-blue-grey-500;
+  }
+  .menu-holder {
+    // background: $md-blue-grey-100;
+    // color: $md-blue-grey-500;
+  }
+  .cursor-default {
+    cursor: default;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .graph-holder {
+    margin: 0;
+    padding: 0;
+  }
+  .hidden {
+    display: none;
+  }
+  .loader {
+    position: absolute;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .table-expanded {
+    position: absolute;
+    z-index: 10;
+  }
+  .clear {
+    display: block;
+    clear: both;
+  }
 }
 
 .clearfix:after, .clearfix:before {
-    content: " ";
-    display: table;
-    clear: both;
-    }
+  content: " ";
+  display: table;
+  clear: both;
+}
 
-    .float-right{
-        float: right;
-    }
+.float-right {
+  float: right;
+}
 
-    .no-list-padding .md-list-tile{
-        padding-left: 14px !important;
-    }
+.no-list-padding .md-list-tile {
+  padding-left: 14px !important;
+}
+

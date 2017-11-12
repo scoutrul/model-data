@@ -13,8 +13,7 @@ export class EmptyLink extends Component {
 		let {
 			name,
 			attr, id,
-			isLink, linkType,
-			setNameLink,
+			setLinkName,
 			onDeleteLinkAttr,
 			setLinkAttrName,
 			onDeleteLink,
@@ -47,7 +46,7 @@ export class EmptyLink extends Component {
 										defaultValue={name}
 										className="md-cell md-cell--bottom"
 										style={{ width: '100%' }}
-										onChange={(e) => setNameLink(e, id)}
+										onChange={e => setLinkName(e, id)}
 									/>
 								</TableColumn>
 								<TableColumn grow className="emptyEntity-header">

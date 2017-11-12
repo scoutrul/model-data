@@ -1,6 +1,5 @@
-import HotModuleInit from "react-hot-loader/patch";
+import { AppContainer } from 'react-hot-loader'
 import React from 'react';
-import { AppContainer } from 'react-hot-loader';
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
@@ -20,6 +19,13 @@ WebFontLoader.load({
 
 const store = configureStore();
 
+if (module.hot) {
+	// Enable Webpack hot module replacement for reducers
+	module.hot.accept('./reducers/index', () => {
+		const nextReducer = require('./reducers/index').default;
+		store.replaceReducer(nextReducer)
+	})
+}
 render(
 	<AppContainer>
 		<Provider store={store}>
