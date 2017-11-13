@@ -28,7 +28,7 @@ export class EmptyEntity extends Component {
 				return isDictionary ? 'Словарь' : 'Простая сущность'
 			}
 		};
-		const { startTime, endTime } = this.props.attr;
+
 		const apiAttr = {
 			setNameAttr: setEntityAttrName,
 			onDeleteAttr: onDeleteEntityAttr,

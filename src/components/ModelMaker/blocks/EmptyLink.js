@@ -21,11 +21,11 @@ export class EmptyLink extends Component {
 		} = this.props;
 		
 		const apiAttr = {
-			onDeleteLinkAttr,
 			onDeleteLink,
 			onAddLinkAttr,
 			setNameAttr: setLinkAttrName,
-			onDeleteAttr: onDeleteLinkAttr
+			onDeleteAttr: onDeleteLinkAttr,
+			ownerID: id
 		};
 		
 		return (
@@ -65,7 +65,13 @@ export class EmptyLink extends Component {
 						
 						<TableBody id='attrRow'>
 							{attr && Object.values(attr).map(el =>
-								<AttrRow key={el.id} id={el.id} name={el.name} ownerID={id}  {...apiAttr}/>
+								<AttrRow key={el.id}
+								         id={el.id}
+								         name={el.name}
+								         disabled={el.disabled}
+								         startTimeAttr={el.startTime}
+								         endTimeAttr={el.endTime}
+								         {...apiAttr}/>
 							)
 							}
 						</TableBody>

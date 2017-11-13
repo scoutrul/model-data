@@ -29,10 +29,9 @@ class AttrRow extends Component {
 								<DatePicker
 									id={`date-picker-E${ownerID}_A${id}`}
 									inline
-									defaultValue={'0'}
-									displayMode="landscape"
-									fullWidth={false}
-									helpText={endTimeAttr && 'дата окончания'}
+									displayMode="portrait"
+									fullWidth={true}
+									label={endTimeAttr ? 'дата конца' : 'дата начала'}
 									autoOk
 								/>
 								:

@@ -11,27 +11,40 @@ import { EmptyEntity } from '../blocks/index'
 class EntitySection extends Component {
 	
 	emptyEntity = (id = 0, isDict = false) => {
+		let defaultAttr = {
+			0: {
+				id: 0,
+				name: 'ID',
+				disabled: true
+			},
+			1: {
+				id: 1,
+				name: 'start time',
+				startTime: true
+			},
+			2: {
+				id: 2,
+				name: 'end time',
+				endTime: 'true'
+			}
+		};
+		let defaultAttrDict = {
+			0: {
+				id: 0,
+				name: 'Ключ',
+				disabled: true
+			},
+			1: {
+				id: 1,
+				name: 'Значение',
+				disabled: true
+			}
+		};
 		return {
 			id: id,
 			name: 'Новая вершина',
 			isDictionary: isDict,
-			attr: {
-				0: {
-					id: 0,
-					name: 'ID',
-					disabled: true
-				},
-				1: {
-					id: 1,
-					name: 'start time',
-					startTime: true
-				},
-				2: {
-					id: 2,
-					name: 'end time',
-					endTime: 'true'
-				}
-			}
+			attr: (isDict) ? defaultAttrDict : defaultAttr
 		}
 	};
 	
@@ -104,9 +117,9 @@ class EntitySection extends Component {
 					transitionName="fade"
 				>
 					{
-						Object.values(entities).map((e, i) => {
+						Object.values(entities).map(e => {
 								return (
-									<EmptyEntity key={i} id={e.id} name={e.name} attr={e.attr}
+									<EmptyEntity key={e.id} id={e.id} name={e.name} attr={e.attr}
 									             isDictionary={e.isDictionary}
 									             onAddEntityAttr={this.onAddEntityAttr}
 									             onDeleteEntity={this.onDeleteEntity}
@@ -126,17 +139,20 @@ class EntitySection extends Component {
 	}
 }
 
+
 function mapStateToProps(state) {
 	return {
 		entities: state.entities
 	}
 }
 
+
 function mapDispatchToProps(dispatch) {
 	return {
 		actions: bindActionCreators(entityActions, dispatch)
 	}
 }
+
 
 export default connect(
 	mapStateToProps,

@@ -37,7 +37,8 @@
 
 .ModelMaker .ModelMaker-grid {
   margin: auto;
-  min-width: 50%;
+  width: 100%;
+  max-width: 1420px;
   padding-top: 5em; }
 
 .ModelMaker .ModelMaker-sourceEntity-header {
@@ -96,9 +97,9 @@
   margin: auto; }
 
 .ModelMaker .entity-attr input {
-  width: 100%;
+  width: 90%;
   padding: 0 10px;
-  margin: 0 10px; }
+  margin: 0 15px; }
 
 .ModelMaker .md-tile-text--primary {
   white-space: nowrap; }
@@ -128,8 +129,8 @@
   margin: 0 auto 1em; }
 
 .ModelMaker .attr-row {
-  padding: 0 10px 0 5px;
-  position: relative; }
+  padding: 0;
+  height: 40px; }
 
 .ModelMaker .emptyEntity-delete {
   padding: 0;
@@ -147,3 +148,30 @@
 
 .ModelMaker .data-section .emptyEntity-delete {
   min-width: 80px; }
+
+.ModelMaker .md-floating-label--floating {
+  font-size: 10px;
+  padding: 0;
+  right: 0;
+  left: auto;
+  top: 0px; }
+
+.ModelMaker .md-floating-label--inactive {
+  transform: translate3d(0, 0px, 0); }
+
+.ModelMaker .md-text-field--floating-margin {
+  padding: 0 !important;
+  margin: 0 !important; }
+
+.ModelMaker .md-picker--inline-icon {
+  left: -120px;
+  top: -60px; }
+
+.ModelMaker .md-btn--icon {
+  height: 30px;
+  width: 30px;
+  padding: 0; }
+
+.ModelMaker .md-text-field-icon--positioned {
+  margin-left: 15px;
+  margin-bottom: 10px; }

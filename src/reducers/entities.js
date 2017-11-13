@@ -31,8 +31,6 @@ export default createReducer({
 					[payload.selfID]: {
 						name: payload.name,
 						id: payload.selfID,
-						start: '000-000',
-						end: '000-000',
 					}
 				}
 			}

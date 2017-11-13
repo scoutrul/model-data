@@ -14,7 +14,6 @@ export const DataEntity = props =>
 			avatar={<FontIcon className={"dataHeaderIcon"}>folder_shared</FontIcon>}
 			
 		/>
-		
 		<DataTable plain id={props.name}>
 			<TableBody>
 				{

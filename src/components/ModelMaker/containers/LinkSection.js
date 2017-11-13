@@ -20,31 +20,30 @@ class LinkSection extends Component {
 			attr: {
 				0: {
 					id: 0,
-					name: 'from',
-					from: ''
+					name: 'Parent',
+					from: '',
+					disabled: true
 				},
 				1: {
 					id: 1,
-					name: 'to',
-					to: ''
+					name: 'Child',
+					to: '',
+					disabled: true
 				},
 				2: {
 					id: 2,
 					name: 'start time',
-					startTime: ''
+					startTime: 'true'
 				},
 				3: {
 					id: 3,
 					name: 'end time',
-					endTime: ''
-				},
-				4: {
-					id: 4,
-					name: 'Аттрибут',
+					endTime: 'true'
 				}
-			},
+			}
 		}
 	};
+	
 	
 	onAddLink = (isDict) => {
 		//find maximum id and ++ it for new id
@@ -119,7 +118,7 @@ class LinkSection extends Component {
 					transitionName="fade"
 				>
 					{
-						Object.values(links).map((e, i) => {
+						Object.values(links).map(e => {
 								return (
 									<EmptyLink key={e.id} id={e.id} name={e.name} attr={e.attr} onAddLinkAttr={this.onAddLinkAttr}
 									           isLink={true} linkType={e.linkType} onDeleteLink={this.onDeleteLink}
